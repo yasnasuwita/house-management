@@ -18,10 +18,16 @@ export default async function KeuanganPage() {
       <Header title="Keuangan" emoji="💰" />
 
       <div className="px-4 py-4">
-        <div className="rounded-2xl bg-gradient-to-br from-teal-600 to-teal-500 p-5 text-white shadow-lg">
-          <p className="text-sm text-teal-100">Saldo Aktif</p>
+        <div
+          className={`rounded-2xl p-5 text-white shadow-lg ${
+            balance < 0
+              ? "bg-gradient-to-br from-rose-600 to-rose-500"
+              : "bg-gradient-to-br from-teal-600 to-teal-500"
+          }`}
+        >
+          <p className={`text-sm ${balance < 0 ? "text-rose-100" : "text-teal-100"}`}>Saldo Aktif</p>
           <p className="mt-1 text-2xl font-bold">{formatRupiah(balance)}</p>
-          <div className="mt-3 flex gap-4 text-xs text-teal-50">
+          <div className={`mt-3 flex gap-4 text-xs ${balance < 0 ? "text-rose-50" : "text-teal-50"}`}>
             <span>▲ Pemasukan: {formatRupiah(income)}</span>
             <span>▼ Pengeluaran: {formatRupiah(expense)}</span>
           </div>
