@@ -1,3 +1,4 @@
+import Link from "next/link";
 import MenuGrid from "@/components/MenuGrid";
 import { getBalance, getUpcomingReminderCount, getUpcomingEventCount } from "@/lib/queries";
 import { formatRupiah } from "@/lib/format";
@@ -30,8 +31,14 @@ export default async function HomePage() {
       </header>
 
       <div className="px-4 py-3">
-        <div className="rounded-2xl bg-gradient-to-br from-teal-600 to-teal-500 p-5 text-white shadow-lg">
-          <p className="text-sm text-teal-100">Saldo Aktif</p>
+        <div
+          className={`rounded-2xl p-5 text-white shadow-lg ${
+            balance < 0
+              ? "bg-gradient-to-br from-rose-600 to-rose-500"
+              : "bg-gradient-to-br from-teal-600 to-teal-500"
+          }`}
+        >
+          <p className={`text-sm ${balance < 0 ? "text-rose-100" : "text-teal-100"}`}>Saldo Aktif</p>
           <p className="mt-1 text-2xl font-bold">{formatRupiah(balance)}</p>
         </div>
       </div>
@@ -39,14 +46,20 @@ export default async function HomePage() {
       {(reminderCount > 0 || eventCount > 0) && (
         <div className="flex gap-2 px-4 pb-2 text-xs">
           {reminderCount > 0 && (
-            <span className="rounded-full bg-orange-100 px-3 py-1 font-medium text-orange-700">
+            <Link
+              href="/maintenance"
+              className="rounded-full bg-orange-100 px-3 py-1 font-medium text-orange-700 active:scale-95"
+            >
               🔧 {reminderCount} reminder maintenance
-            </span>
+            </Link>
           )}
           {eventCount > 0 && (
-            <span className="rounded-full bg-blue-100 px-3 py-1 font-medium text-blue-700">
+            <Link
+              href="/kalender"
+              className="rounded-full bg-blue-100 px-3 py-1 font-medium text-blue-700 active:scale-95"
+            >
               📅 {eventCount} agenda mendatang
-            </span>
+            </Link>
           )}
         </div>
       )}
