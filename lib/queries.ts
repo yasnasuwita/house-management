@@ -92,13 +92,13 @@ export async function getUpcomingReminderCount(): Promise<number> {
   return Number(rows[0]?.count ?? 0);
 }
 
-export async function getUpcomingEventCount(): Promise<number> {
+export async function getTodayEvents(): Promise<CalendarEvent[]> {
   await ensureSchema();
   const todayIso = new Date().toISOString().slice(0, 10);
-  const { rows } = await sql<{ count: string }>`
-    SELECT COUNT(*) AS count FROM calendar_events WHERE event_date >= ${todayIso};
+  const { rows } = await sql<CalendarEvent>`
+    SELECT * FROM calendar_events WHERE event_date = ${todayIso} ORDER BY created_at ASC;
   `;
-  return Number(rows[0]?.count ?? 0);
+  return rows;
 }
 
 export async function getTodoItems(): Promise<TodoItem[]> {
