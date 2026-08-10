@@ -7,7 +7,6 @@ function touchedPaths() {
   revalidatePath("/");
   revalidatePath("/keuangan");
   revalidatePath("/laporan");
-  revalidatePath("/tambah-cepat");
 }
 
 export async function addTransaction(formData: FormData) {

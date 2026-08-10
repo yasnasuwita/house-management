@@ -5,7 +5,6 @@ import { sql, ensureSchema } from "@/lib/db";
 
 function touchedPaths() {
   revalidatePath("/link-penting");
-  revalidatePath("/tambah-cepat");
 }
 
 function normalizeUrl(url: string): string {

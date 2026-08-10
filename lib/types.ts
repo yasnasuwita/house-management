@@ -38,3 +38,11 @@ export interface CalendarEvent {
   user_label: string | null;
   created_at: string;
 }
+
+export interface TodoItem {
+  id: number;
+  title: string;
+  is_done: boolean;
+  user_label: string | null;
+  created_at: string;
+}

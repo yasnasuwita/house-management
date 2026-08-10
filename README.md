@@ -9,7 +9,7 @@ Aplikasi web sederhana untuk mengelola urusan rumah tangga: keuangan, maintenanc
 - 🔧 **Maintenance** — catatan & reminder servis rumah/kendaraan
 - 📅 **Kalender** — agenda bersama & reminder
 - 🔗 **Link Penting** — simpan link/dokumen penting
-- ⚡ **Tambah Cepat** — satu form ringkas untuk menambah data ke modul mana pun
+- 📝 **Catatan** — checklist sederhana (belanja, tugas rumah, dll.)
 
 Akses aplikasi dilindungi PIN bersama (tanpa sistem akun terpisah), dan setiap data bisa ditandai siapa yang input (label bisa diganti, default "Saya" / "Suami").
 
@@ -71,7 +71,7 @@ app/
   maintenance/        # modul maintenance
   kalender/            # modul kalender
   link-penting/        # modul link penting
-  tambah-cepat/        # form tambah cepat lintas modul
+  catatan/             # modul catatan/checklist
 lib/
   db.ts               # koneksi database + auto-migrasi skema
   queries.ts          # query data untuk semua modul

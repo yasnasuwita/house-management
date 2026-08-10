@@ -77,6 +77,16 @@ async function createSchema() {
       created_at TIMESTAMPTZ NOT NULL DEFAULT now()
     );
   `;
+
+  await sql`
+    CREATE TABLE IF NOT EXISTS todo_items (
+      id SERIAL PRIMARY KEY,
+      title TEXT NOT NULL,
+      is_done BOOLEAN NOT NULL DEFAULT false,
+      user_label TEXT,
+      created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+    );
+  `;
 }
 
 // Cached across warm invocations so we don't re-run CREATE TABLE on every request.
