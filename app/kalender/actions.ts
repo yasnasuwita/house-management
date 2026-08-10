@@ -6,7 +6,6 @@ import { sql, ensureSchema } from "@/lib/db";
 function touchedPaths() {
   revalidatePath("/");
   revalidatePath("/kalender");
-  revalidatePath("/tambah-cepat");
 }
 
 export async function addCalendarEvent(formData: FormData) {

@@ -6,7 +6,7 @@ const MENU_ITEMS = [
   { href: "/maintenance", label: "Maintenance", emoji: "🔧", color: "bg-orange-500" },
   { href: "/link-penting", label: "Link Penting", emoji: "🔗", color: "bg-purple-500" },
   { href: "/laporan", label: "Laporan Keuangan", emoji: "📊", color: "bg-pink-500" },
-  { href: "/tambah-cepat", label: "Tambah Cepat", emoji: "⚡", color: "bg-amber-500" },
+  { href: "/catatan", label: "Catatan", emoji: "📝", color: "bg-cyan-500" },
 ];
 
 export default function MenuGrid() {

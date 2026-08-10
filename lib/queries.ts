@@ -1,5 +1,5 @@
 import { sql, ensureSchema } from "./db";
-import type { Transaction, MaintenanceItem, ImportantLink, CalendarEvent } from "./types";
+import type { Transaction, MaintenanceItem, ImportantLink, CalendarEvent, TodoItem } from "./types";
 
 export async function getBalance(): Promise<{ income: number; expense: number; balance: number }> {
   await ensureSchema();
@@ -99,4 +99,12 @@ export async function getUpcomingEventCount(): Promise<number> {
     SELECT COUNT(*) AS count FROM calendar_events WHERE event_date >= ${todayIso};
   `;
   return Number(rows[0]?.count ?? 0);
+}
+
+export async function getTodoItems(): Promise<TodoItem[]> {
+  await ensureSchema();
+  const { rows } = await sql<TodoItem>`
+    SELECT * FROM todo_items ORDER BY is_done ASC, created_at DESC;
+  `;
+  return rows;
 }

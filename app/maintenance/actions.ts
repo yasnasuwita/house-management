@@ -6,7 +6,6 @@ import { sql, ensureSchema } from "@/lib/db";
 function touchedPaths() {
   revalidatePath("/");
   revalidatePath("/maintenance");
-  revalidatePath("/tambah-cepat");
 }
 
 export async function addMaintenanceItem(formData: FormData) {
